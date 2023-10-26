@@ -1,5 +1,6 @@
 ## Primer Parcial Descubre Las Palabras
-![pygame](Recursos\imagenReadme.png)
+![pygame](./Recursos./imagenReadme.png)
+
 
 
 ## Alumno
