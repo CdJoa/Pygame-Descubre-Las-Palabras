@@ -28,22 +28,37 @@ while bandera:
         if event.type == pygame.QUIT:
             bandera = False
 
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:#si hay un click izquierdo
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            pygame.mixer.music.load( "Recursos\click.mp3") 
+            pygame.mixer.music.play(0)
+
             # colidepoint es nuestra colision con los botones
             if boton_shuffle.collidepoint(event.pos):
                 shuffle_superiores(letras_superiores) # el cambio de orden en las letras
+                pygame.mixer.music.load( "Recursos\erandom.mp3") 
+                pygame.mixer.music.play(0)
 
             if boton_cruz2.collidepoint(event.pos):
                         estado_actual = 8#pasamos al estado final
+                        pygame.mixer.music.load( "Recursos\eborrar.mp3") 
+                        pygame.mixer.music.play(0)
 
             if boton_tilde2.collidepoint(event.pos):
                         estado_actual = (estado_actual + 1) % len(estados)
-                        tiempo_inicial = tiempo_actual
+                        tiempo_inicial = tiempo_actual = 0
+                        pygame.mixer.music.load( "Recursos\eacierto.mp3") 
+                        pygame.mixer.music.play(0)
 
             apretar_letra(event)# lo que sería la colision del click
 
             if boton_borrar.collidepoint(event.pos): # el tacho de basura
                 borrar_letras_superiores_e_inferiores(letras_superiores, letras_inferiores)
+                sonido_borrar = pygame.mixer.Sound("Recursos\eborrar.mp3")
+
+                sonido_borrar.play()
+                
+                sonido_borrar.play(1)
+
 
             if mostrar_boton_ingresar and boton_ingresar.collidepoint(event.pos):
                 palabra_formada = obtener_palabra_inferior(letras_inferiores) #la lectura de la palabra de abajo
@@ -62,9 +77,13 @@ while bandera:
                         palabras_validas.append(palabra_formada)#almacenamos la lista de palabras validas
                         print(palabras_validas) 
                         tiempo_mostrar_tilde = pygame.time.get_ticks()  #temporizador para mostrar el tilde
+                        pygame.mixer.music.load( "Recursos\eacierto.mp3") 
+                        pygame.mixer.music.play(0)
                     else:
                         palabras_invalidas.append(palabra_formada)
                         tiempo_mostrar_cruz = pygame.time.get_ticks()  #temporizador para mostrar la cruz
+                        pygame.mixer.music.load( "Recursos\error.mp3") 
+                        pygame.mixer.music.play(0)
 
 
                 with open("palabras_validas.json", 'w') as archivo: #creamos un json modo escritura de las palabras validas
@@ -89,6 +108,8 @@ while bandera:
             sistema = False
             puntaje = True
             pregunta = False
+            pygame.mixer.music.load( "Recursos\puntaje.mp3" ) 
+            pygame.mixer.music.play(-1)
 
 
         case "inicio":
@@ -110,6 +131,9 @@ while bandera:
         case "fase":
             pregunta = False
 
+            if tiempo_inicial is None:
+                tiempo_inicial = tiempo_actual
+
             sistema = True
 
             tiempo_restante = 90 - (tiempo_actual - tiempo_inicial)
@@ -123,11 +147,12 @@ while bandera:
 
             if tiempo_actual - tiempo_inicial >= 90:
                 estado_actual = (estado_actual + 1) % len(estados)
-                tiempo_inicial = tiempo_actual
             
         case "pregunta":
             sistema = False
             pregunta = True
+            tiempo_inicial = tiempo_actual = 0
+
 
     PANTALLA.fill(NEGRO)
 
@@ -167,6 +192,7 @@ while bandera:
         if mostrar_boton_ingresar:
             PANTALLA.blit(imagen_ingresar, boton_ingresar)
 
+        mostrar_palabras_validas(palabras_validas, PANTALLA)
 
         tiempo_mostrar_tilde = mostrar_imagen_temporal(tiempo_mostrar_tilde, tiempo_mostrar_tilde_duracion, imagen_tilde, boton_tilde)
         tiempo_mostrar_cruz = mostrar_imagen_temporal(tiempo_mostrar_cruz, tiempo_mostrar_cruz_duracion, imagen_cruz, boton_cruz)
@@ -198,5 +224,4 @@ while bandera:
     pygame.display.update()
 
 pygame.quit()
-
 

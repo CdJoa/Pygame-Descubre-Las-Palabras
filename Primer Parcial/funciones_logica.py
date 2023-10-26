@@ -133,3 +133,21 @@ def mostrar_informacion(texto, x, y, color=BLANCO): # esta funcion me sirve para
     rectangulo_texto = texto_superficie.get_rect()
     rectangulo_texto.topleft = (x, y)
     PANTALLA.blit(texto_superficie, rectangulo_texto.topleft)
+
+
+def mostrar_palabras_validas(palabras_validas, pantalla):
+    x = 10
+    y = ALTO - 150 
+
+    pygame.draw.rect(pantalla, BLANCO, (x, y, ANCHO - 20, 100))  # Dibuja el cuadro blanco
+    for palabra_valida in palabras_validas:
+        palabra_surface = fuente.render(palabra_valida, True, NEGRO)
+        pantalla.blit(palabra_surface, (x, y))
+
+        x += palabra_surface.get_width() + 10  
+        if x + palabra_surface.get_width() >= ANCHO - 20 or palabra_surface.get_width() >= ANCHO - 20:
+            # Si la palabra está a punto de llegar al ancho final de la pantalla, baja el y
+            y += 30
+            x = 10
+    if y < ALTO - 60:
+        y = ALTO - 60  # Asegura que el rectángulo no se salga de la pantalla
