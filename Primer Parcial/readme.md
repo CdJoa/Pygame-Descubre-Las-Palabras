@@ -1,6 +1,5 @@
 ## Primer Parcial Descubre Las Palabras
-![pygame](Recursos\imagenReadme.png)
-
+![pygame](\Primer Parcial\Recursos\imagenReadme.png)
 
 ## Alumno
 - Carnelos Duarte Joaquin Alejo
