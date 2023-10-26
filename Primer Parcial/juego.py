@@ -16,6 +16,7 @@ pygame.display.set_icon(icono)
 pygame.display.set_caption("Descubre las Palabras") #nombre ventana
 
 
+
 while bandera:
 
     clock.tick(FPS)
@@ -40,8 +41,8 @@ while bandera:
 
             if boton_cruz2.collidepoint(event.pos):
                         estado_actual = 8#pasamos al estado final
-                        pygame.mixer.music.load( "Recursos\eborrar.mp3") 
-                        pygame.mixer.music.play(0)
+
+                        sonido_borrar2.play()
 
             if boton_tilde2.collidepoint(event.pos):
                         estado_actual = (estado_actual + 1) % len(estados)
@@ -84,6 +85,7 @@ while bandera:
                         tiempo_mostrar_cruz = pygame.time.get_ticks()  #temporizador para mostrar la cruz
                         pygame.mixer.music.load( "Recursos\error.mp3") 
                         pygame.mixer.music.play(0)
+                        
 
 
                 with open("palabras_validas.json", 'w') as archivo: #creamos un json modo escritura de las palabras validas
@@ -103,13 +105,16 @@ while bandera:
             tiempo_surface = fuente.render("Juego Finalizado", True, BLANCO, NEGRO)
             tiempo_rect = tiempo_surface.get_rect()
             tiempo_rect.center = (ANCHO // 2, ALTO // 2)
-
             #
             sistema = False
             puntaje = True
             pregunta = False
-            pygame.mixer.music.load( "Recursos\puntaje.mp3" ) 
-            pygame.mixer.music.play(-1)
+
+            sonido_borrar3 =pygame.mixer.Sound("Recursos\puntaje.mp3")
+
+            sonido_borrar3.play(0)
+
+
 
 
         case "inicio":
@@ -136,7 +141,7 @@ while bandera:
 
             sistema = True
 
-            tiempo_restante = 90 - (tiempo_actual - tiempo_inicial)
+            tiempo_restante = 2 - (tiempo_actual - tiempo_inicial)
             
             tiempo_surface = fuente.render(f"Ronda: {tiempo_restante}", True, BLANCO, NEGRO) # mi reloj para el case fase
 
@@ -145,7 +150,7 @@ while bandera:
                 mostrar_informacion(palabra_valida, ANCHO // 4, y_validas)
                 y_validas += 30
 
-            if tiempo_actual - tiempo_inicial >= 90:
+            if tiempo_actual - tiempo_inicial >= 2:
                 estado_actual = (estado_actual + 1) % len(estados)
             
         case "pregunta":
@@ -199,6 +204,8 @@ while bandera:
 
     if puntaje:
         
+        pygame.mixer.music.load( "Recursos\puntaje.mp3" ) 
+        pygame.mixer.music.play(-1)
         cantidad_letras_validas = len(palabras_validas)
         mostrar_informacion(f"Cantidad de palabras válidas: {cantidad_letras_validas}", 100, 100)
 

@@ -99,6 +99,10 @@ imagen_cruz2 = pygame.image.load("Recursos\cruz.png")
 imagen_cruz2 = pygame.transform.scale(imagen_cruz2, (100, 100))
 boton_cruz2 = pygame.Rect((ANCHO) / 2, (ALTO -150) ,50,500)
 
+sonido_borrar2 = pygame.mixer.Sound("Recursos\eborrar.mp3")
+
+
+
 
 
 puntaje = False
