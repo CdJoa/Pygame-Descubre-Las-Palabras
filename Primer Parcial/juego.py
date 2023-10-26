@@ -42,7 +42,12 @@ while bandera:
             if boton_cruz2.collidepoint(event.pos):
                         estado_actual = 8#pasamos al estado final
 
+                        sonido_borrar2 = pygame.mixer.Sound("Recursos\eborrar.mp3")
+
+                        sonido_borrar3 =pygame.mixer.Sound("Recursos\puntaje.mp3")
+                        
                         sonido_borrar2.play()
+                        sonido_borrar3.play(1)
 
             if boton_tilde2.collidepoint(event.pos):
                         estado_actual = (estado_actual + 1) % len(estados)
@@ -109,11 +114,7 @@ while bandera:
             sistema = False
             puntaje = True
             pregunta = False
-
-            sonido_borrar3 =pygame.mixer.Sound("Recursos\puntaje.mp3")
-
-            sonido_borrar3.play(0)
-
+            
 
 
 
@@ -141,7 +142,7 @@ while bandera:
 
             sistema = True
 
-            tiempo_restante = 2 - (tiempo_actual - tiempo_inicial)
+            tiempo_restante = 90 - (tiempo_actual - tiempo_inicial)
             
             tiempo_surface = fuente.render(f"Ronda: {tiempo_restante}", True, BLANCO, NEGRO) # mi reloj para el case fase
 
