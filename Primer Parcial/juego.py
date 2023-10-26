@@ -151,7 +151,7 @@ while bandera:
                 mostrar_informacion(palabra_valida, ANCHO // 4, y_validas)
                 y_validas += 30
 
-            if tiempo_actual - tiempo_inicial >= 2:
+            if tiempo_actual - tiempo_inicial >= 90:
                 estado_actual = (estado_actual + 1) % len(estados)
             
         case "pregunta":
