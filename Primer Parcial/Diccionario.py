@@ -105,7 +105,7 @@ def crear_json(): #para finalmente crear nuestro json
 
 #cesta fue la mejor manera que encontre para poder exportar estas 2 funciones que necesito a otros archivos de la carpeta
 def diccionario():
-    convertir_a_csv('diccionarioRAE.txt', 'ListaPalabras.csv')
+    convertir_a_csv('Primer Parcial\diccionarioRAE.txt', 'ListaPalabras.csv')
     crear_json()
 #esta fue porque sino figuraba 2 veces que realizaba la acción
 if __name__ == "__main__":

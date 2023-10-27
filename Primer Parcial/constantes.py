@@ -70,36 +70,36 @@ tiempo_mostrar_cruz_duracion = 500
 pygame.init()
 
 
-imagen_shuffle = pygame.image.load("Recursos/shuffle.jpg")
+imagen_shuffle = pygame.image.load("Primer Parcial\Recursos\shuffle.jpg")
 imagen_shuffle = pygame.transform.scale(imagen_shuffle, (100, 100))
 boton_shuffle = pygame.Rect(ANCHO - 100, 0, 100, 100)
 
 
-imagen_borrar = pygame.image.load("Recursos/sborrar.png")
+imagen_borrar = pygame.image.load("Primer Parcial\Recursos\sborrar.png")
 imagen_borrar = pygame.transform.scale(imagen_borrar, (100, 100))
 boton_borrar = pygame.Rect(ANCHO - 100, 150, 100, 100)  # Ajusta las coordenadas aquí
 
-imagen_ingresar = pygame.image.load("Recursos/ingresar.png")
+imagen_ingresar = pygame.image.load("Primer Parcial\Recursos\ingresar.png")
 imagen_ingresar = pygame.transform.scale(imagen_ingresar, (300, 100))
 boton_ingresar = pygame.Rect((ANCHO) / 2, (ALTO / 2) ,300,100)
 
-imagen_tilde = pygame.image.load("Recursos\stilde.png")
+imagen_tilde = pygame.image.load("Primer Parcial\Recursos\stilde.png")
 imagen_tilde = pygame.transform.scale(imagen_tilde, (100, 100))
 boton_tilde = pygame.Rect((ANCHO) / 2, (ALTO -150) ,0,500)
 
-imagen_cruz = pygame.image.load("Recursos\cruz.png")
+imagen_cruz = pygame.image.load("Primer Parcial\Recursos\cruz.png")
 imagen_cruz = pygame.transform.scale(imagen_cruz, (100, 100))
 boton_cruz = pygame.Rect((ANCHO) / 2, (ALTO -150) ,50,500)
 
-imagen_tilde2 = pygame.image.load("Recursos\stilde.png")
+imagen_tilde2 = pygame.image.load("Primer Parcial\Recursos\stilde.png")
 imagen_tilde2 = pygame.transform.scale(imagen_tilde2, (100, 100))
 boton_tilde2 = pygame.Rect((ANCHO) / 2, (ALTO / 2) ,0,500)
 
-imagen_cruz2 = pygame.image.load("Recursos\cruz.png")
+imagen_cruz2 = pygame.image.load("Primer Parcial\Recursos\cruz.png")
 imagen_cruz2 = pygame.transform.scale(imagen_cruz2, (100, 100))
 boton_cruz2 = pygame.Rect((ANCHO) / 2, (ALTO -150) ,50,500)
 
-sonido_borrar2 = pygame.mixer.Sound("Recursos\eborrar.mp3")
+sonido_borrar2 = pygame.mixer.Sound("Primer Parcial\Recursos\eborrar.mp3")
 
 
 

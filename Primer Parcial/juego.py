@@ -10,7 +10,7 @@ clock = pygame.time.Clock()
 fuente = pygame.font.Font(None, 30)
 
 
-icono = pygame.image.load("Recursos\elabc.png")
+icono = pygame.image.load("Primer Parcial\Recursos\elabc.png")
 pygame.display.set_icon(icono)
 
 pygame.display.set_caption("Descubre las Palabras") #nombre ventana
@@ -30,21 +30,21 @@ while bandera:
             bandera = False
 
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            pygame.mixer.music.load( "Recursos\click.mp3") 
+            pygame.mixer.music.load( "Primer Parcial\Recursos\click.mp3") 
             pygame.mixer.music.play(0)
 
             # colidepoint es nuestra colision con los botones
             if boton_shuffle.collidepoint(event.pos):
                 shuffle_superiores(letras_superiores) # el cambio de orden en las letras
-                pygame.mixer.music.load( "Recursos\erandom.mp3") 
+                pygame.mixer.music.load( "Primer Parcial\Recursos\erandom.mp3") 
                 pygame.mixer.music.play(0)
 
             if boton_cruz2.collidepoint(event.pos):
                         estado_actual = 8#pasamos al estado final
 
-                        sonido_borrar2 = pygame.mixer.Sound("Recursos\eborrar.mp3")
+                        sonido_borrar2 = pygame.mixer.Sound("Primer Parcial\Recursos\eborrar.mp3")
 
-                        sonido_borrar3 =pygame.mixer.Sound("Recursos\puntaje.mp3")
+                        sonido_borrar3 =pygame.mixer.Sound("Primer Parcial\Recursos\puntaje.mp3")
                         
                         sonido_borrar2.play()
                         sonido_borrar3.play(1)
@@ -52,14 +52,14 @@ while bandera:
             if boton_tilde2.collidepoint(event.pos):
                         estado_actual = (estado_actual + 1) % len(estados)
                         tiempo_inicial = tiempo_actual = 0
-                        pygame.mixer.music.load( "Recursos\eacierto.mp3") 
+                        pygame.mixer.music.load( "Primer Parcial\Recursos\eacierto.mp3") 
                         pygame.mixer.music.play(0)
 
             apretar_letra(event)# lo que sería la colision del click
 
             if boton_borrar.collidepoint(event.pos): # el tacho de basura
                 borrar_letras_superiores_e_inferiores(letras_superiores, letras_inferiores)
-                sonido_borrar = pygame.mixer.Sound("Recursos\eborrar.mp3")
+                sonido_borrar = pygame.mixer.Sound("Primer Parcial\Recursos\eborrar.mp3")
 
                 sonido_borrar.play()
                 
@@ -83,12 +83,12 @@ while bandera:
                         palabras_validas.append(palabra_formada)#almacenamos la lista de palabras validas
                         print(palabras_validas) 
                         tiempo_mostrar_tilde = pygame.time.get_ticks()  #temporizador para mostrar el tilde
-                        pygame.mixer.music.load( "Recursos\eacierto.mp3") 
+                        pygame.mixer.music.load( "Primer Parcial\Recursos\eacierto.mp3") 
                         pygame.mixer.music.play(0)
                     else:
                         palabras_invalidas.append(palabra_formada)
                         tiempo_mostrar_cruz = pygame.time.get_ticks()  #temporizador para mostrar la cruz
-                        pygame.mixer.music.load( "Recursos\error.mp3") 
+                        pygame.mixer.music.load( "Primer Parcial\Recursos\error.mp3") 
                         pygame.mixer.music.play(0)
                         
 
@@ -205,7 +205,7 @@ while bandera:
 
     if puntaje:
         
-        pygame.mixer.music.load( "Recursos\puntaje.mp3" ) 
+        pygame.mixer.music.load( "Primer Parcial\Recursos\puntaje.mp3" ) 
         pygame.mixer.music.play(-1)
         cantidad_letras_validas = len(palabras_validas)
         mostrar_informacion(f"Cantidad de palabras válidas: {cantidad_letras_validas}", 100, 100)
